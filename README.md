@@ -1,2 +1,2 @@
 # Simple-Search-Engine
-Create a simple search engine using Go and Solr.
+Create a simple search engine using Go.
