@@ -67,6 +67,6 @@ func main() {
 	var datasets Datasets
 	json.Unmarshal(byteArr, &datasets)
 	for _, dataset := range datasets.DatasetsList {
-		fmt.Println(dataset)
+		downloadDataset("./"+dataset.Name, dataset.Url)
 	}
 }
