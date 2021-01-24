@@ -2,6 +2,7 @@ package read_dataset
 
 import (
 	"encoding/xml"
+	"io/ioutil"
 	"os"
 
 	error_handler "github.com/kartik-dutt/Simple-Search-Engine/src/error_handler"
@@ -9,33 +10,27 @@ import (
 
 // We expect the json file to have the following attributes :
 // Title, URL and Abstract.
-type document struct {
+type Document struct {
 	Title string `xml:"title"`
 	URL   string `xml:"url"`
 	Text  string `xml:"abstract"`
 	ID    int
 }
 
-func ReadDataset(filepath string) ([]document, error) {
+type Documents struct {
+	DocumentsList []Document `xml:"doc"`
+}
+
+func ReadDataset(filepath string) ([]Document, error) {
 	xmlFile, err := os.Open(filepath)
-	error_handler.ErrorHandler("Error opening "+filepath, err)
+	if err != nil {
+		error_handler.ErrorHandler("Error opening "+filepath, err)
+	}
+
 	defer xmlFile.Close()
+	byteArr, err := ioutil.ReadAll(xmlFile)
 
-	dec := xml.NewDecoder(xmlFile)
-	dump := struct {
-		Documents []document `xml: "doc"`
-	}{}
-
-	if err := dec.Decode(&dump); err != nil {
-		error_handler.ErrorHandler("Error decoding xml file.", err)
-		return nil, err
-	}
-
-	docs := dump.Documents
-	// ID is simple the index.
-	for i := range docs {
-		docs[i].ID = i
-	}
-
-	return docs, nil
+	var docs Documents
+	xml.Unmarshal(byteArr, &docs)
+	return docs.DocumentsList, nil
 }

@@ -32,9 +32,11 @@ func main() {
 	byteArr, _ := ioutil.ReadAll(jsonFile)
 	var datasets Datasets
 	json.Unmarshal(byteArr, &datasets)
+	docs := make([]read_dataset.Document, 0)
 	for _, dataset := range datasets.DatasetsList {
-		fmt.Println("../data/" + dataset.Name)
-		return
-		read_dataset.ReadDataset("../data/" + dataset.Name)
+		fmt.Println("Opening ./../data/" + dataset.Name)
+		doc, _ := read_dataset.ReadDataset("../data/" + dataset.Name)
+		docs = append(docs, doc...)
+		fmt.Println("Closed!")
 	}
 }
