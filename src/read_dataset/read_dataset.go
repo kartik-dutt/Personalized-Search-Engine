@@ -4,7 +4,7 @@ import (
 	"encoding/xml"
 	"os"
 
-	error_handler "github.com/kartik-dutt/Simple-Search-Engine/error_handler"
+	error_handler "github.com/kartik-dutt/Simple-Search-Engine/src/error_handler"
 )
 
 // We expect the json file to have the following attributes :
