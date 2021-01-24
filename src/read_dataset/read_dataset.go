@@ -32,5 +32,9 @@ func ReadDataset(filepath string) ([]Document, error) {
 
 	var docs Documents
 	xml.Unmarshal(byteArr, &docs)
+	for i, _ := range docs.DocumentsList {
+		docs.DocumentsList[i].ID = i
+	}
+
 	return docs.DocumentsList, nil
 }
