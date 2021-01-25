@@ -22,8 +22,9 @@ Ever wanted to store the websites you frequently use? Store them using your pers
 <p>
 This app provides a fast personalized search engine. Add documents that you often look up in the dataset or use the wiki-dataset that is provided. Search through millions of web pages in microseconds locally.
 
-Personalized Use Case :
-Add you stackoverflor links to the dataset and keep whenever you encounter the same problem again use this app, instead of spending hours on the net searching for the same link again.
+<b>Personalized Use Case :</b>
+
+Add you stackoverflow links to the dataset and keep whenever you encounter the same problem again use this app, instead of spending hours on the net searching for the same link again.
 </p>
 
 <hr/>
